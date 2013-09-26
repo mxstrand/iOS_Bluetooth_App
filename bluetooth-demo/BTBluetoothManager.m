@@ -97,6 +97,9 @@ static BTBluetoothManager *sharedInstance = nil;
        fromPeer:(MCPeerID *)peerID
 {
     NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    // Log dict??
+    NSLog(@"Dict: %@", dict);
 
     NSInteger command = [dict[@"command"] intValue];
 
@@ -108,16 +111,27 @@ static BTBluetoothManager *sharedInstance = nil;
 
             // start negotiating player index
             playerIndexTimestamp = [NSDate date];
+            
+            //Log player timestamp (that's you)
+            //NSLog(@"Log of player timestamp %d", playerIndexTimestamp);
             NSDictionary *negotiation = @{@"command":     @(BluetoothCommandNegotiate),
                                           @"playerIndex": @0,
                                           @"timestamp":   playerIndexTimestamp};
+            
+            // Logging negotiation
+            NSLog(@"Negotiation for playerIndexTimestamp: %@", negotiation);
+            
             [self sendDictionaryToPeers:negotiation];
             break;
         }
         case BluetoothCommandNegotiate:
         {
             NSDate *otherTimestamp = [dict objectForKey:@"timestamp"];
+            // Log otherTimestamp
+            NSLog(@"Log of other player timestamp %@", otherTimestamp);
             NSInteger otherPlayer = [[dict objectForKey:@"playerIndex"] intValue];
+            // Log other player index
+            NSLog(@"Log of other player index %d", otherPlayer);
 
             if( [otherTimestamp compare:playerIndexTimestamp] == NSOrderedAscending )
             {
@@ -127,6 +141,7 @@ static BTBluetoothManager *sharedInstance = nil;
                                              [NSNumber numberWithInt:BluetoothCommandNegotiateConfirm], @"command",
                                              [NSNumber numberWithInt:_playerIndex], @"playerIndex",
                                              nil];
+                NSLog(@"Another log of the negotiation", negotiation);
                 [self sendDictionaryToPeers:negotiation];
 
                 dispatch_async(dispatch_get_main_queue(), ^{
