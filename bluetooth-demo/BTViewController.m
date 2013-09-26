@@ -51,6 +51,7 @@ static const CGFloat bubbleSize = 50.;
                                                                               bubbleSize*i, bubbleSize*i )];
         
         bubble.originalIndex = i;
+        bubble.tag = i;
         [self.view addSubview:bubble];
         [b addObject:bubble];
     }
