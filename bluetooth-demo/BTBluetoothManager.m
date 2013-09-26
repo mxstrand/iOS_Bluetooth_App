@@ -7,6 +7,7 @@
 //
 
 #import "BTBluetoothManager.h"
+#define kBTAppID @"bluetoofdemo"
 
 static BTBluetoothManager *sharedInstance = nil;
 
@@ -24,11 +25,11 @@ static BTBluetoothManager *sharedInstance = nil;
     self = [super init];
     if( self ) {
         MCPeerID *myId = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
-        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:@"cfbluetoothdemo_v2"];
+        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:kBTAppID]; //15 charaters - shoul
         nearbyBrowser.delegate = self;
         [nearbyBrowser startBrowsingForPeers];
 
-        nearbyAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myId discoveryInfo:nil serviceType:@"cfbluetoothdemo_v2"];
+        nearbyAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myId discoveryInfo:nil serviceType:kBTAppID];
         nearbyAdvertiser.delegate = self;
         [nearbyAdvertiser startAdvertisingPeer];
 
