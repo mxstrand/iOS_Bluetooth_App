@@ -66,7 +66,8 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     [self pickUp];
 
     NSDictionary *dict = @{@"command": @(BluetoothCommandPickUp),
-                           @"viewNumber": @(_originalIndex)};
+                           @"viewNumber": @(_originalIndex),
+                           @"tagNumber": @(_tag)};
     [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
 }
 
@@ -78,6 +79,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 
         NSDictionary *dict = @{@"command": @(BluetoothCommandMove),
                                @"viewNumber": @(_originalIndex),
+                               @"tagNumber": @(_tag),
                                @"newCenter": [NSValue valueWithCGPoint:self.center]};
         [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
     }
@@ -108,7 +110,8 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         movingTouch = nil;
 
         NSDictionary *dict = @{@"command": @(BluetoothCommandDrop),
-                               @"viewNumber": @(_originalIndex)};
+                               @"viewNumber": @(_originalIndex),
+                               @"tagNumber": @(_tag)};
         [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
     }
 }
