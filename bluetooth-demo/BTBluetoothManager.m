@@ -47,8 +47,13 @@ static BTBluetoothManager *sharedInstance = nil;
 
 -(void) sendDictionaryToPeers:(NSDictionary*)dict
 {
+    NSError *error = nil;
     NSData *encodedData = [NSKeyedArchiver archivedDataWithRootObject:dict];
-    [session sendData:encodedData toPeers:session.connectedPeers withMode:MCSessionSendDataUnreliable error:nil];
+    [session sendData:encodedData toPeers:session.connectedPeers withMode:MCSessionSendDataReliable error:&error];
+    
+    if (error) {
+        NSLog(@"Bluetooth connection error %@", error);
+    }
 }
 
 
