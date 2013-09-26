@@ -46,7 +46,7 @@ static const CGFloat bubbleSize = 50.;
 {
     NSMutableArray *b = [NSMutableArray new];
 
-    for( NSInteger i = 1; i < nBubbles; i++ ) {
+    for( NSInteger i = 2; i < nBubbles; i++ ) {
         BTBubbleView *bubble = [[BTBubbleView alloc] initWithFrame:CGRectMake( bubbleSize, bubbleSize*i,
                                                                               bubbleSize*i, bubbleSize*i )];
         
