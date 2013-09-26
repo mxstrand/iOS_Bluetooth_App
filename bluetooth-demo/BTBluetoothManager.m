@@ -141,7 +141,7 @@ static BTBluetoothManager *sharedInstance = nil;
                                              [NSNumber numberWithInt:BluetoothCommandNegotiateConfirm], @"command",
                                              [NSNumber numberWithInt:_playerIndex], @"playerIndex",
                                              nil];
-                NSLog(@"Another log of the negotiation", negotiation);
+                NSLog(@"Another log of the negotiation %@", negotiation);
                 [self sendDictionaryToPeers:negotiation];
 
                 dispatch_async(dispatch_get_main_queue(), ^{

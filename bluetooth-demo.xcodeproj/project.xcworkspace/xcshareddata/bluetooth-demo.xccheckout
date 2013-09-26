@@ -5,48 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>30AC886A-3902-45F3-97D4-1490AA32E2DF</string>
+	<string>849D9889-57D6-4166-B7BA-DF116A5DAEBC</string>
 	<key>IDESourceControlProjectName</key>
 	<string>bluetooth-demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>881DA254-6560-45E0-8C19-054126ACD9A0</key>
+		<key>B62F7217-F59F-4C91-BBB0-F22BBF04A576</key>
 		<string>ssh://github.com/mxstrand/iOS_Bluetooth_App.git</string>
-		<key>8B9ADE79-D0E3-41C9-8942-0CB14148CD9F</key>
-		<string>ssh://github.com/mxstrand/iOS_Bluetooth_App.git%0Agit@github.com:mxstrand/iOS_Bluetooth_App.git%0Agit@github.com:mxstrand/iOS_Bluetooth_App.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>bluetooth-demo/bluetooth-demo.xcodeproj/project.xcworkspace</string>
+	<string>bluetooth-demo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>881DA254-6560-45E0-8C19-054126ACD9A0</key>
+		<key>B62F7217-F59F-4C91-BBB0-F22BBF04A576</key>
 		<string>../..</string>
-		<key>8B9ADE79-D0E3-41C9-8942-0CB14148CD9F</key>
-		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/mxstrand/iOS_Bluetooth_App.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8B9ADE79-D0E3-41C9-8942-0CB14148CD9F</string>
+	<string>B62F7217-F59F-4C91-BBB0-F22BBF04A576</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>881DA254-6560-45E0-8C19-054126ACD9A0</string>
+			<string>B62F7217-F59F-4C91-BBB0-F22BBF04A576</string>
 			<key>IDESourceControlWCCName</key>
-			<string>bluetooth-demo</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8B9ADE79-D0E3-41C9-8942-0CB14148CD9F</string>
-			<key>IDESourceControlWCCName</key>
-			<string>sea-b4-ios</string>
+			<string>iOS_Bluetooth_App</string>
 		</dict>
 	</array>
 </dict>
