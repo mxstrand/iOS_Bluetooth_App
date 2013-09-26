@@ -24,7 +24,7 @@ static BTBluetoothManager *sharedInstance = nil;
     self = [super init];
     if( self ) {
         MCPeerID *myId = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
-        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:@"cfbluetoothdemo"];
+        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:@"cfbluetoothdemo_revised"];
         nearbyBrowser.delegate = self;
         [nearbyBrowser startBrowsingForPeers];
 
