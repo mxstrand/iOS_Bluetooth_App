@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3A0E83D7-8C9A-440E-A4E0-95C0312A00E5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>bluetooth-demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3ADFB2CB-CDCE-43F5-A693-4E736010565D</key>
+		<string>https://github.com/codefellows/sea-b4-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>bluetooth-demo/bluetooth-demo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3ADFB2CB-CDCE-43F5-A693-4E736010565D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/codefellows/sea-b4-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3ADFB2CB-CDCE-43F5-A693-4E736010565D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3ADFB2CB-CDCE-43F5-A693-4E736010565D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sea-b4-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
