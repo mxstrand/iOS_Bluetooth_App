@@ -38,19 +38,14 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 {
     isMoving = TRUE;
 
-    CABasicAnimation *a = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    a.duration = 0.3;
-    a.toValue = @50.;
-    a.delegate = self;
-    [self.layer addAnimation:a forKey:animationKey];
-
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 0.85;
         CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 );
         t = CGAffineTransformRotate( t, M_PI );
         self.transform = t;
+        self.layer.cornerRadius = 50.;
     } completion:^(BOOL finished) {
-        self.layer.cornerRadius = [a.toValue floatValue];
+//        self.layer.cornerRadius = [a.toValue floatValue];
     }];
 }
 
@@ -87,17 +82,12 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 
 -(void) drop
 {
-    CABasicAnimation *a = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    a.duration = 0.3;
-    a.toValue = @0.;
-    a.delegate = self;
-    [self.layer addAnimation:a forKey:animationKey];
-
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 1.;
         self.transform = CGAffineTransformIdentity;
+        self.layer.cornerRadius = 0.1;
     } completion:^(BOOL finished) {
-        self.layer.cornerRadius = [a.toValue floatValue];
+        self.layer.cornerRadius = 0.;
     }];
 
     isMoving = FALSE;
