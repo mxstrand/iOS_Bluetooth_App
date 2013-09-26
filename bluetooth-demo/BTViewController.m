@@ -68,7 +68,7 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandPickUp:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                NSLog (@"Item was picked up for item# %@", viewNumber);
+                NSLog (@"Item was picked up for item# %ld", (long)viewNumber);
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
                     [bubble pickUp];
@@ -78,7 +78,7 @@ static const CGFloat bubbleSize = 50.;
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
-                NSLog (@"Item was dropped up for item# %@", viewNumber);
+                NSLog (@"Item was dropped up for item# %ld", (long)viewNumber);
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
                     [bubble drop];
                 break;
@@ -87,7 +87,7 @@ static const CGFloat bubbleSize = 50.;
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
-                NSLog (@"Item was moved up for item# %@", viewNumber);
+                NSLog (@"Item was moved up for item# %ld", (long)viewNumber);
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
                     bubble.center = [dict[@"newCenter"] CGPointValue];
             }
