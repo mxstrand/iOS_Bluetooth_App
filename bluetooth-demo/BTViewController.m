@@ -10,8 +10,8 @@
 #import "BTBubbleView.h"
 #import "BTBluetoothManager.h"
 
-static const NSInteger nBubbles = 5;
-static const CGFloat bubbleSize = 60.;
+static const NSInteger nBubbles = 4;
+static const CGFloat bubbleSize = 50.;
 
 @interface BTViewController ()
 {
@@ -47,8 +47,9 @@ static const CGFloat bubbleSize = 60.;
     NSMutableArray *b = [NSMutableArray new];
 
     for( NSInteger i = 0; i < nBubbles; i++ ) {
-        BTBubbleView *bubble = [[BTBubbleView alloc] initWithFrame:CGRectMake( bubbleSize*i, bubbleSize*i,
-                                                                              bubbleSize, bubbleSize )];
+        BTBubbleView *bubble = [[BTBubbleView alloc] initWithFrame:CGRectMake( bubbleSize, bubbleSize*i,
+                                                                              bubbleSize*i, bubbleSize*i )];
+        
         bubble.originalIndex = i;
         [self.view addSubview:bubble];
         [b addObject:bubble];
