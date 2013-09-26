@@ -75,7 +75,7 @@ static const CGFloat bubbleSize = 50.;
                 NSLog (@"PICKED UP with TAG-based tagNumber %ld", (long)tagNumber);
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
-                    [bubble pickUp];
+                    [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
                 break;
             }
             case BluetoothCommandDrop:
@@ -86,7 +86,7 @@ static const CGFloat bubbleSize = 50.;
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 NSLog (@"DROPPED with TAG-based tagNumber %ld", (long)tagNumber);
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
-                    [bubble drop];
+                    [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
                 break;
             }
             case BluetoothCommandMove:
@@ -96,8 +96,10 @@ static const CGFloat bubbleSize = 50.;
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"MOVED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 NSLog (@"MOVED with TAG-based tagNumber %ld", (long)tagNumber);
-                if( [bubble isKindOfClass:[BTBubbleView class]] )
+                if( [bubble isKindOfClass:[BTBubbleView class]] ) {
                     bubble.center = [dict[@"newCenter"] CGPointValue];
+                    [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+                }
             }
         }
     }];
