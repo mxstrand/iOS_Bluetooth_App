@@ -10,7 +10,7 @@
 #import "BTBubbleView.h"
 #import "BTBluetoothManager.h"
 
-static const NSInteger nBubbles = 2;
+static const NSInteger nBubbles = 3;
 static const CGFloat bubbleSize = 50.;
 
 @interface BTViewController ()
@@ -64,42 +64,22 @@ static const CGFloat bubbleSize = 50.;
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 NSLog (@"PICKED UP with ARRAY-based viewNumber %ld", (long)viewNumber);
                 
-//                for( BTBubbleView *bubble in bubbles )
-//                    if( bubble.originalIndex == viewNumber ) {
-//                        [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
-//                        break;
-//                    }
-
-                BTBubbleView *bubble;
-            
-                for( NSInteger i = 0; i < bubbles.count; i++ ) {
-                    bubble = bubbles[i];
-                    if(viewNumber == bubble.originalIndex) {
+                for( BTBubbleView *bubble in bubbles )
+                    if( bubble.originalIndex == viewNumber ) {
+                        [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
                         break;
                     }
-                }
-                
-                if( [bubble isKindOfClass:[BTBubbleView class]] )
-                    [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
-                break;
             }
             case BluetoothCommandDrop:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
-                BTBubbleView *bubble;
-                
-                for( NSInteger i = 0; i < bubbles.count; i++ ) {
-                    bubble = bubbles[i];
-                    if(viewNumber == bubble.originalIndex) {
+                for( BTBubbleView *bubble in bubbles )
+                    if( bubble.originalIndex == viewNumber ) {
+                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
                         break;
                     }
-                }
-                
-                if( [bubble isKindOfClass:[BTBubbleView class]] )
-                    [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
-                break;
             }
             case BluetoothCommandMove:
             {
@@ -107,19 +87,12 @@ static const CGFloat bubbleSize = 50.;
                 //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"MOVED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 
-                BTBubbleView *bubble;
-                
-                for( NSInteger i = 0; i < bubbles.count; i++ ) {
-                    bubble = bubbles[i];
-                    if(viewNumber == bubble.originalIndex) {
+                for( BTBubbleView *bubble in bubbles )
+                    if( bubble.originalIndex == viewNumber ) {
+                        bubble.center = [dict[@"newCenter"] CGPointValue];
+                        [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
                         break;
                     }
-                }
-                
-                if( [bubble isKindOfClass:[BTBubbleView class]] ) {
-                    bubble.center = [dict[@"newCenter"] CGPointValue];
-                    [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
-                }
             }
         }
     }];
