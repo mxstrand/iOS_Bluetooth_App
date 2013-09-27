@@ -57,7 +57,7 @@ static BTBluetoothManager *sharedInstance = nil;
     
 }
 
-
+// Confirming that a connection has been made between you and a peer
 +(BOOL) hasConnection
 {
     return (sharedInstance != nil && sharedInstance.peerName != nil);
@@ -77,7 +77,15 @@ static BTBluetoothManager *sharedInstance = nil;
 
 
 #pragma mark - Nearby browser delegate
+/*
+MCNearbyServiceBrowser is searching for nearby devices using the same service type (in our case this is the constant we defined as (kBTAppID @"bluetoofdemo"). Once nearby devices with this service type are located, the class gives the ability to invite those peers to a multi-peer connectivity session.
+ 
+As of iOS 7, this utilizes network Wi-Fi, peer-to-peer Wi-Fi and Bluetooth. For instance, if Bluetooth was not available, connectivity would still be possible by either of the other two methods mentioned above.
+ 
+In our method below, we are immediately invites the peer to the session.
 
+*/
+ 
 -(void) browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
 {
     [browser invitePeer:peerID toSession:session withContext:nil timeout:0];
@@ -85,10 +93,21 @@ static BTBluetoothManager *sharedInstance = nil;
 
 -(void) browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
 {
+    // Did I set up this error log correctly?
+    NSError *error;
+    NSLog(@"Peer lost. Error: %@", error);
 }
 
 
 #pragma mark - Nearby advertiser delegate
+
+/*
+ 
+ This class method is advertising our service (remember our service-type "bluetoofdemo"?) which enables nearby peers to invite you to connect. When an invitation is recieved, MCNearbyServiceAdvertiser notifies its delegate.
+ 
+ In this method we are confirming that we recieved and invitation from a peer and are immediately accepting that invitation. Note: We do not need to automatically accept the invitation, typically this would be where the advertiser is given the option to accept or decline.
+ 
+*/
 
 -(void) advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL, MCSession *))invitationHandler
 {
@@ -97,6 +116,12 @@ static BTBluetoothManager *sharedInstance = nil;
 
 
 #pragma mark - Session delegate
+
+/*
+ 
+ Ah, now we're getting somewhere! In the below (required) delegate method, (session:peer:didChangeState), is being called when the state of a nearby peer changes. State changes can be "MCSessionStateConnected" or "MCSessionStateNotConnected" and in our case if a "connected" state change occurs we are sending a dictionary to the peer. ??? Wait.. need help here.
+ 
+*/
 
 -(void) session:(MCSession*)theSession
            peer:(MCPeerID *)peerID
@@ -114,7 +139,9 @@ static BTBluetoothManager *sharedInstance = nil;
     {
     }
 }
-
+/*
+ Now we have a connection and this method is indicating that we have recieved data from a peer. In the broadest overview, this method will now connect the two (or more) peers and a short battle will ensue for who connects the fastest. Consider this a race that declares the users in 1st or 2nd place. Note: In our example we only connected between two devices, however the maximum number of connected peers is eight. The playerIndexTimestamp declares 
+*/
 
 - (void)session:(MCSession *)session
  didReceiveData:(NSData *)data
