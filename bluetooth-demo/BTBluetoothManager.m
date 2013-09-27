@@ -3,7 +3,7 @@
 //  bluetooth-demo
 //
 //  Created by John Bender on 9/26/13.
-//  Copyright (c) 2013 General UI, LLC. All rights reserved.
+//  
 //
 
 #import "BTBluetoothManager.h"
@@ -24,11 +24,15 @@ static BTBluetoothManager *sharedInstance = nil;
 {
     self = [super init];
     if( self ) {
+        // Capture the user-defined device name
         MCPeerID *myId = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
-        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:kBTAppID]; //15 charaters - shoul
+        
+        // Search for a 15-character max appID
+        nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myId serviceType:kBTAppID];
         nearbyBrowser.delegate = self;
         [nearbyBrowser startBrowsingForPeers];
 
+        // Advertise a 15-character max appID
         nearbyAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myId discoveryInfo:nil serviceType:kBTAppID];
         nearbyAdvertiser.delegate = self;
         [nearbyAdvertiser startAdvertisingPeer];
@@ -39,22 +43,20 @@ static BTBluetoothManager *sharedInstance = nil;
     return self;
 }
 
-// Received a byte stream from remote peer
-- (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
-{
-    
-}
 
 // Start receiving a resource from remote peer
 - (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress
 {
-    
+}
+
+// Received a byte stream from remote peer
+- (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
+{
 }
 
 // Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
 - (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error
 {
-    
 }
 
 
@@ -64,6 +66,7 @@ static BTBluetoothManager *sharedInstance = nil;
 }
 
 
+// Take a dictionary passed from the BTBubbleView, encode it, and send it to session connected peers.
 -(void) sendDictionaryToPeers:(NSDictionary*)dict
 {
     NSError *error = nil;
@@ -155,7 +158,7 @@ static BTBluetoothManager *sharedInstance = nil;
             NSLog(@"Log of other player timestamp %@", otherTimestamp);
             NSInteger otherPlayer = [[dict objectForKey:@"playerIndex"] intValue];
             // Log other player index
-            NSLog(@"Log of other player index %d", otherPlayer);
+            NSLog(@"Log of other player index %ld", (long)otherPlayer);
 
             if( [otherTimestamp compare:playerIndexTimestamp] == NSOrderedAscending )
             {
@@ -170,7 +173,7 @@ static BTBluetoothManager *sharedInstance = nil;
 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Player Index"
-                                                                    message:[NSString stringWithFormat:@"Other timestamp won, setting my index to %i", _playerIndex]
+                                                                    message:[NSString stringWithFormat:@"Other timestamp won, setting my index to %li", (long)_playerIndex]
                                                                    delegate:nil
                                                           cancelButtonTitle:@"OK"
                                                           otherButtonTitles:nil];
@@ -186,7 +189,7 @@ static BTBluetoothManager *sharedInstance = nil;
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Player Index"
-                                                                message:[NSString stringWithFormat:@"Peer confirmed my timestamp won, setting my index to %i", _playerIndex]
+                                                                message:[NSString stringWithFormat:@"Peer confirmed my timestamp won, setting my index to %li", (long)_playerIndex]
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];

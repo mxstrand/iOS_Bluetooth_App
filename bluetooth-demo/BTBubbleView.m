@@ -34,25 +34,9 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 }
 
 
--(void) pickUp
-{
-    isMoving = TRUE;
-
-    [UIView animateWithDuration:0.3 animations:^{
-        self.alpha = 0.85;
-        CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 );
-        t = CGAffineTransformRotate( t, M_PI );
-        self.transform = t;
-//        self.transform = CGAffineTransformMakeScale(2.f, 1.5);
-        self.layer.cornerRadius = 50.;
-    } completion:^(BOOL finished) {
-//        self.layer.cornerRadius = [a.toValue floatValue];
-    }];
-}
-
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event //touchesBegan is a canned function.
 {
-    if( isMoving ) return;
+    if( isMoving ) return; //if an object is already moving, end function.
 
     movingTouch = [touches anyObject];
 
@@ -61,6 +45,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     originalPosition = self.center;
     [self pickUp];
 
+    // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object. Send that dictionary to your peers via the BluetoothManager.
     NSDictionary *dict = @{@"command": @(BluetoothCommandPickUp),
                            @"viewNumber": @(_originalIndex),
                            @"tagNumber": @(self.tag)};
@@ -73,25 +58,13 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         CGPoint touchPoint = [movingTouch locationInView:self.superview];
         self.center = CGPointMake( touchPoint.x + touchOffset.width, touchPoint.y + touchOffset.height );
 
+        // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object.
         NSDictionary *dict = @{@"command": @(BluetoothCommandMove),
                                @"viewNumber": @(_originalIndex),
                                @"tagNumber": @(self.tag),
                                @"newCenter": [NSValue valueWithCGPoint:self.center]};
         [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
     }
-}
-
--(void) drop
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        self.alpha = 1.;
-        self.transform = CGAffineTransformIdentity;
-        self.layer.cornerRadius = 0.1;
-    } completion:^(BOOL finished) {
-        self.layer.cornerRadius = 0.;
-    }];
-
-    isMoving = FALSE;
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event //th
@@ -118,6 +91,36 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     }
 }
 
+
+-(void) pickUp
+{
+    isMoving = TRUE;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 0.85;
+        CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 );
+        t = CGAffineTransformRotate( t, M_PI );
+        self.transform = t;
+        //        self.transform = CGAffineTransformMakeScale(2.f, 1.5);
+        self.layer.cornerRadius = 50.;
+    } completion:^(BOOL finished) {
+        //        self.layer.cornerRadius = [a.toValue floatValue];
+    }];
+}
+
+
+-(void) drop
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 1.;
+        self.transform = CGAffineTransformIdentity;
+        self.layer.cornerRadius = 0.1;
+    } completion:^(BOOL finished) {
+        self.layer.cornerRadius = 0.;
+    }];
+    
+    isMoving = FALSE;
+}
 
 #pragma mark - Animation delegate
 
