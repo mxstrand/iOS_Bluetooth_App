@@ -3,7 +3,7 @@
 //  bluetooth-demo
 //
 //  Created by John Bender on 9/26/13.
-//  Copyright (c) 2013 General UI, LLC. All rights reserved.
+//  
 //
 
 #import "BTViewController.h"
@@ -24,10 +24,10 @@ static const CGFloat bubbleSize = 50.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self makeBubbles];
-
-    [BTBluetoothManager instance];
+    
+    [BTBluetoothManager instance]; // 
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(bluetoothDataReceived:)
