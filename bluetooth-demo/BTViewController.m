@@ -24,10 +24,10 @@ static const CGFloat bubbleSize = 50.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self makeBubbles];
-
-    [BTBluetoothManager instance];
+    
+    [BTBluetoothManager instance]; // 
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(bluetoothDataReceived:)
