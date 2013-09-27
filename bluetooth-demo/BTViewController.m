@@ -64,6 +64,12 @@ static const CGFloat bubbleSize = 50.;
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 NSLog (@"PICKED UP with ARRAY-based viewNumber %ld", (long)viewNumber);
                 
+//                for( BTBubbleView *bubble in bubbles )
+//                    if( bubble.originalIndex == viewNumber ) {
+//                        [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
+//                        break;
+//                    }
+
                 BTBubbleView *bubble;
             
                 for( NSInteger i = 0; i < bubbles.count; i++ ) {
