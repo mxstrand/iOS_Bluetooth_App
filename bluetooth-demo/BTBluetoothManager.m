@@ -140,7 +140,7 @@ In our method below, we are immediately invites the peer to the session.
     }
 }
 /*
- Now we have a connection and this method is indicating that we have recieved data from a peer. In the broadest overview, this method will now connect the two (or more) peers and a short battle will ensue for who connects the fastest. Consider this a race that declares the users in 1st or 2nd place. Note: In our example we only connected between two devices, however the maximum number of connected peers is eight. The playerIndexTimestamp declares 
+ Now we have a connection and this method is indicating that we have recieved data from a peer. In the broadest overview, this method will now connect the two (or more) peers and a short battle will ensue for who connects the fastest. Consider this a race that declares the users in 1st or 2nd place. Note: In our example we only connected between two devices, however the maximum number of connected peers is eight. The playerIndexTimestamp declares
 */
 
 - (void)session:(MCSession *)session
