@@ -14,7 +14,6 @@
 		C3FAA1FA17F49DC900C4AAF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3FAA1F817F49DC900C4AAF7 /* InfoPlist.strings */; };
 		C3FAA1FC17F49DC900C4AAF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FAA1FB17F49DC900C4AAF7 /* main.m */; };
 		C3FAA20017F49DC900C4AAF7 /* BTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FAA1FF17F49DC900C4AAF7 /* BTAppDelegate.m */; };
-		C3FAA20317F49DC900C4AAF7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FAA20117F49DC900C4AAF7 /* Main_iPad.storyboard */; };
 		C3FAA20617F49DC900C4AAF7 /* BTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FAA20517F49DC900C4AAF7 /* BTViewController.m */; };
 		C3FAA20817F49DC900C4AAF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FAA20717F49DC900C4AAF7 /* Images.xcassets */; };
 		C3FAA20F17F49DC900C4AAF7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FAA20E17F49DC900C4AAF7 /* XCTest.framework */; };
@@ -50,7 +49,6 @@
 		C3FAA1FD17F49DC900C4AAF7 /* bluetooth-demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bluetooth-demo-Prefix.pch"; sourceTree = "<group>"; };
 		C3FAA1FE17F49DC900C4AAF7 /* BTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAppDelegate.h; sourceTree = "<group>"; };
 		C3FAA1FF17F49DC900C4AAF7 /* BTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAppDelegate.m; sourceTree = "<group>"; };
-		C3FAA20217F49DC900C4AAF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		C3FAA20417F49DC900C4AAF7 /* BTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTViewController.h; sourceTree = "<group>"; };
 		C3FAA20517F49DC900C4AAF7 /* BTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTViewController.m; sourceTree = "<group>"; };
 		C3FAA20717F49DC900C4AAF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 		C3FAA21617F49DC900C4AAF7 /* bluetooth-demoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bluetooth-demoTests-Info.plist"; sourceTree = "<group>"; };
 		C3FAA21817F49DC900C4AAF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C3FAA21A17F49DC900C4AAF7 /* bluetooth_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bluetooth_demoTests.m; sourceTree = "<group>"; };
-		C3FAA22417F49DE200C4AAF7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C3FAA22617F49EFA00C4AAF7 /* UIColor+RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RandomColor.h"; sourceTree = "<group>"; };
 		C3FAA22717F49EFA00C4AAF7 /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RandomColor.m"; sourceTree = "<group>"; };
 		C3FAA22917F49FA200C4AAF7 /* BTBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTBubbleView.h; sourceTree = "<group>"; };
@@ -117,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				C3FAA22F17F4AEDD00C4AAF7 /* MultipeerConnectivity.framework */,
-				C3FAA22417F49DE200C4AAF7 /* GameKit.framework */,
 				C3FAA1EF17F49DC900C4AAF7 /* Foundation.framework */,
 				C3FAA1F117F49DC900C4AAF7 /* CoreGraphics.framework */,
 				C3FAA1F317F49DC900C4AAF7 /* UIKit.framework */,
@@ -131,7 +127,6 @@
 			children = (
 				C3FAA1FE17F49DC900C4AAF7 /* BTAppDelegate.h */,
 				C3FAA1FF17F49DC900C4AAF7 /* BTAppDelegate.m */,
-				C3FAA20117F49DC900C4AAF7 /* Main_iPad.storyboard */,
 				6589AB2317F4CA2000C6FADB /* Main_iPhone.storyboard */,
 				C3FAA20417F49DC900C4AAF7 /* BTViewController.h */,
 				C3FAA20517F49DC900C4AAF7 /* BTViewController.m */,
@@ -256,7 +251,6 @@
 				C3FAA20817F49DC900C4AAF7 /* Images.xcassets in Resources */,
 				6589AB2417F4CA2000C6FADB /* Main_iPhone.storyboard in Resources */,
 				C3FAA1FA17F49DC900C4AAF7 /* InfoPlist.strings in Resources */,
-				C3FAA20317F49DC900C4AAF7 /* Main_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,14 +303,6 @@
 				C3FAA1F917F49DC900C4AAF7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C3FAA20117F49DC900C4AAF7 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C3FAA20217F49DC900C4AAF7 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		C3FAA21717F49DC900C4AAF7 /* InfoPlist.strings */ = {
