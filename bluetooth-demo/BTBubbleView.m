@@ -52,7 +52,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
 }
 
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event // touchesMoved is a canned function.
 {
     if( [touches containsObject:movingTouch] ) {
         CGPoint touchPoint = [movingTouch locationInView:self.superview];
@@ -67,12 +67,13 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     }
 }
 
--(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event //th
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event // touchesEnded is a canned function.
 {
     if( [touches containsObject:movingTouch] ) {
         [self drop];
         movingTouch = nil;
 
+        // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object. Send that dictionary to your peers via the BluetoothManager.
         NSDictionary *dict = @{@"command": @(BluetoothCommandDrop),
                                @"viewNumber": @(_originalIndex),
                                @"tagNumber": @(self.tag)};
@@ -80,7 +81,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     }
 }
 
--(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event // touchesCancelled is a canned function.
 {
     if( [touches containsObject:movingTouch] ) {
         [UIView animateWithDuration:0.3 animations:^{
@@ -119,7 +120,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         self.layer.cornerRadius = 0.;
     }];
     
-    isMoving = FALSE;
+    isMoving = FALSE; // by setting back to false, the touchesBegan function will run fully when triggered.
 }
 
 #pragma mark - Animation delegate
