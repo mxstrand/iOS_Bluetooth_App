@@ -77,7 +77,7 @@ static const CGFloat bubbleSize = 50.;
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 for( BTBubbleView *bubble in bubbles )
                     if( bubble.originalIndex == viewNumber ) {
-                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
+                        [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
                         break;
                     }
             }
@@ -87,12 +87,19 @@ static const CGFloat bubbleSize = 50.;
                 //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"MOVED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 
-                for( BTBubbleView *bubble in bubbles )
-                    if( bubble.originalIndex == viewNumber ) {
-                        bubble.center = [dict[@"newCenter"] CGPointValue];
-                        [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+                BTBubbleView *bubble;
+                
+                for( NSInteger i = 0; i < bubbles.count; i++ ) {
+                    bubble = bubbles[i];
+                    if(viewNumber == bubble.originalIndex) {
                         break;
                     }
+                }
+                
+                if( [bubble isKindOfClass:[BTBubbleView class]] ) {
+                    bubble.center = [dict[@"newCenter"] CGPointValue];
+                    [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+                }
             }
         }
     }];
