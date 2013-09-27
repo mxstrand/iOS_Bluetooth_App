@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <GameKit/GameKit.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 typedef enum {
