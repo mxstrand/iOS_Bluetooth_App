@@ -77,7 +77,7 @@ static const CGFloat bubbleSize = 50.;
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
                 for( BTBubbleView *bubble in bubbles )
                     if( bubble.originalIndex == viewNumber ) {
-                        [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
+                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
                         break;
                     }
             }
