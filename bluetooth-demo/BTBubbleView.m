@@ -43,13 +43,14 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 );
         t = CGAffineTransformRotate( t, M_PI );
         self.transform = t;
+//        self.transform = CGAffineTransformMakeScale(2.f, 1.5);
         self.layer.cornerRadius = 50.;
     } completion:^(BOOL finished) {
 //        self.layer.cornerRadius = [a.toValue floatValue];
     }];
 }
 
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event //touchesBegan is a canned function.
 {
     if( isMoving ) return;
 
@@ -93,7 +94,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     isMoving = FALSE;
 }
 
--(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event //th
 {
     if( [touches containsObject:movingTouch] ) {
         [self drop];
