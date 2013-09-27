@@ -47,8 +47,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 
     // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object. Send that dictionary to your peers via the BluetoothManager.
     NSDictionary *dict = @{@"command": @(BluetoothCommandPickUp),
-                           @"viewNumber": @(_originalIndex),
-                           @"tagNumber": @(self.tag)};
+                           @"viewNumber": @(_originalIndex)};
     [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
 }
 
@@ -61,7 +60,6 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object.
         NSDictionary *dict = @{@"command": @(BluetoothCommandMove),
                                @"viewNumber": @(_originalIndex),
-                               @"tagNumber": @(self.tag),
                                @"newCenter": [NSValue valueWithCGPoint:self.center]};
         [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
     }
@@ -75,8 +73,7 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
 
         // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object. Send that dictionary to your peers via the BluetoothManager.
         NSDictionary *dict = @{@"command": @(BluetoothCommandDrop),
-                               @"viewNumber": @(_originalIndex),
-                               @"tagNumber": @(self.tag)};
+                               @"viewNumber": @(_originalIndex)};
         [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
     }
 }

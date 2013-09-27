@@ -35,13 +35,6 @@ static const CGFloat bubbleSize = 50.;
                                                object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 -(void) makeBubbles
 {
     NSMutableArray *b = [NSMutableArray new];
@@ -51,7 +44,6 @@ static const CGFloat bubbleSize = 50.;
                                                                               bubbleSize*i, bubbleSize*i )];
         
         bubble.originalIndex = i;
-        bubble.tag = i;
         NSLog (@"Bubble was given tag# %d", bubble.tag);
         [self.view addSubview:bubble];
         [b addObject:bubble];
@@ -70,9 +62,7 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandPickUp:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                NSInteger tagNumber = [dict[@"tagNumber"] intValue];
                 NSLog (@"PICKED UP with ARRAY-based viewNumber %ld", (long)viewNumber);
-                NSLog (@"PICKED UP with TAG-based tagNumber %ld", (long)tagNumber);
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
                     [bubble performSelectorOnMainThread:@selector(pickUp) withObject:nil waitUntilDone:YES];
@@ -81,10 +71,8 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandDrop:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                NSInteger tagNumber = [dict[@"tagNumber"] intValue];
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
-                NSLog (@"DROPPED with TAG-based tagNumber %ld", (long)tagNumber);
                 if( [bubble isKindOfClass:[BTBubbleView class]] )
                     [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
                 break;
@@ -92,10 +80,8 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandMove:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                NSInteger tagNumber = [dict[@"tagNumber"] intValue];
                 BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"MOVED with ARRAY-based viewNumber %ld", (long)viewNumber);
-                NSLog (@"MOVED with TAG-based tagNumber %ld", (long)tagNumber);
                 if( [bubble isKindOfClass:[BTBubbleView class]] ) {
                     bubble.center = [dict[@"newCenter"] CGPointValue];
                     [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
@@ -104,5 +90,12 @@ static const CGFloat bubbleSize = 50.;
         }
     }];
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end
