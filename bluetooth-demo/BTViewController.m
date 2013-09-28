@@ -10,7 +10,7 @@
 #import "BTBubbleView.h"
 #import "BTBluetoothManager.h"
 
-static const NSInteger nBubbles = 3;
+static const NSInteger nBubbles = 4;
 static const CGFloat bubbleSize = 50.;
 
 @interface BTViewController ()
@@ -39,7 +39,7 @@ static const CGFloat bubbleSize = 50.;
 {
     NSMutableArray *b = [NSMutableArray new];
 
-    for( NSInteger i = 0; i < nBubbles; i++ ) {
+    for( NSInteger i = 1; i < nBubbles; i++ ) {
         BTBubbleView *bubble = [[BTBubbleView alloc] initWithFrame:CGRectMake( bubbleSize, bubbleSize*i,
                                                                               bubbleSize*i, bubbleSize*i )];
         
@@ -76,11 +76,17 @@ static const CGFloat bubbleSize = 50.;
                 //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
 
+//                for( BTBubbleView *bubble in bubbles )
+//                    if( bubble.originalIndex == viewNumber ) {
+//                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
+//                        break;
+//                    }
+                
                 BTBubbleView *bubble;
                 
                 for( NSInteger i = 0; i < bubbles.count; i++ ) {
                     bubble = bubbles[i];
-                    if(viewNumber == bubble.originalIndex) {
+                    if( bubble.originalIndex == viewNumber ) {
                         break;
                     }
                 }
@@ -92,21 +98,11 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandMove:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                //BTBubbleView *bubble = self.view.subviews[viewNumber];
-                NSLog (@"MOVED with ARRAY-based viewNumber %ld", (long)viewNumber);
-                
-                BTBubbleView *bubble;
-                
-                for( NSInteger i = 0; i < bubbles.count; i++ ) {
-                    bubble = bubbles[i];
-                    if(viewNumber == bubble.originalIndex) {
+                for( BTBubbleView *bubble in bubbles )
+                    if( bubble.originalIndex == viewNumber ) {
+                        bubble.center = [dict[@"newCenter"] CGPointValue];
+                        [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
                         break;
-                    }
-                }
-                
-                if( [bubble isKindOfClass:[BTBubbleView class]] ) {
-                    bubble.center = [dict[@"newCenter"] CGPointValue];
-                    [bubble performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
                 }
             }
         }
