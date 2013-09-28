@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6589AB2417F4CA2000C6FADB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6589AB2317F4CA2000C6FADB /* Main_iPhone.storyboard */; };
+		6589AB2417F4CA2000C6FADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6589AB2317F4CA2000C6FADB /* Main.storyboard */; };
 		C3FAA1F017F49DC900C4AAF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FAA1EF17F49DC900C4AAF7 /* Foundation.framework */; };
 		C3FAA1F217F49DC900C4AAF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FAA1F117F49DC900C4AAF7 /* CoreGraphics.framework */; };
 		C3FAA1F417F49DC900C4AAF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FAA1F317F49DC900C4AAF7 /* UIKit.framework */; };
@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6589AB2317F4CA2000C6FADB /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		6589AB2317F4CA2000C6FADB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C3FAA1EC17F49DC900C4AAF7 /* bluetooth-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bluetooth-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FAA1EF17F49DC900C4AAF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3FAA1F117F49DC900C4AAF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,7 +127,7 @@
 			children = (
 				C3FAA1FE17F49DC900C4AAF7 /* BTAppDelegate.h */,
 				C3FAA1FF17F49DC900C4AAF7 /* BTAppDelegate.m */,
-				6589AB2317F4CA2000C6FADB /* Main_iPhone.storyboard */,
+				6589AB2317F4CA2000C6FADB /* Main.storyboard */,
 				C3FAA20417F49DC900C4AAF7 /* BTViewController.h */,
 				C3FAA20517F49DC900C4AAF7 /* BTViewController.m */,
 				C3FAA22917F49FA200C4AAF7 /* BTBubbleView.h */,
@@ -249,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3FAA20817F49DC900C4AAF7 /* Images.xcassets in Resources */,
-				6589AB2417F4CA2000C6FADB /* Main_iPhone.storyboard in Resources */,
+				6589AB2417F4CA2000C6FADB /* Main.storyboard in Resources */,
 				C3FAA1FA17F49DC900C4AAF7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

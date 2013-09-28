@@ -75,11 +75,19 @@ static const CGFloat bubbleSize = 50.;
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
                 //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
-                for( BTBubbleView *bubble in bubbles )
-                    if( bubble.originalIndex == viewNumber ) {
-                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
+
+                BTBubbleView *bubble;
+                
+                for( NSInteger i = 0; i < bubbles.count; i++ ) {
+                    bubble = bubbles[i];
+                    if(viewNumber == bubble.originalIndex) {
                         break;
                     }
+                }
+                
+                if( [bubble isKindOfClass:[BTBubbleView class]] )
+                    [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
+                break;
             }
             case BluetoothCommandMove:
             {
