@@ -73,15 +73,8 @@ static const CGFloat bubbleSize = 50.;
             case BluetoothCommandDrop:
             {
                 NSInteger viewNumber = [dict[@"viewNumber"] intValue];
-                //BTBubbleView *bubble = self.view.subviews[viewNumber];
                 NSLog (@"DROPPED with ARRAY-based viewNumber %ld", (long)viewNumber);
 
-//                for( BTBubbleView *bubble in bubbles )
-//                    if( bubble.originalIndex == viewNumber ) {
-//                        [bubble performSelectorOnMainThread:@selector(drop) withObject:nil waitUntilDone:YES];
-//                        break;
-//                    }
-                
                 BTBubbleView *bubble;
                 
                 for( NSInteger i = 0; i < bubbles.count; i++ ) {
