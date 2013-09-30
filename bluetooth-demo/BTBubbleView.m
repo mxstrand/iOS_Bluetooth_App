@@ -60,7 +60,7 @@
         CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 ); // make it 10% largers
         t = CGAffineTransformRotate( t, M_PI ); // spin it
         self.transform = t;
-        self.layer.cornerRadius = 50.; // rounded corners
+        self.layer.cornerRadius = self.frame.size.width/2.; // rounded corners
     } completion:^(BOOL finished) {
     }];
 }
