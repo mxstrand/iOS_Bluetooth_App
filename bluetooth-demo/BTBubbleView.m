@@ -7,11 +7,11 @@
 //
 
 #import "BTBubbleView.h"
-#import "UIColor+RandomColor.h"
-#import <QuartzCore/QuartzCore.h>
 #import "BTBluetoothManager.h"
 
-static NSString* const animationKey = @"myCornerRadiusAnimation";
+#import "UIColor+RandomColor.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface BTBubbleView ()
 {
@@ -51,13 +51,27 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     [[BTBluetoothManager instance] sendDictionaryToPeers:dict];
 }
 
+-(void) pickUp
+{
+    isMoving = TRUE;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 0.85; // add transparency
+        CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 ); // make it 10% largers
+        t = CGAffineTransformRotate( t, M_PI ); // spin it
+        self.transform = t;
+        self.layer.cornerRadius = 50.; // rounded corners
+    } completion:^(BOOL finished) {
+    }];
+}
+
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event // touchesMoved is a canned function.
 {
     if( [touches containsObject:movingTouch] ) {
         CGPoint touchPoint = [movingTouch locationInView:self.superview];
         self.center = CGPointMake( touchPoint.x + touchOffset.width, touchPoint.y + touchOffset.height );
 
-        // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object.
+        // Create a dictionary containing key, value pairs for an indicator of the current command and the acting object. Additionally, this dictionary will contain the x, y coordinates of the bubble's center as it moves.
         NSDictionary *dict = @{@"command": @(BluetoothCommandMove),
                                @"viewNumber": @(_originalIndex),
                                @"newCenter": [NSValue valueWithCGPoint:self.center]};
@@ -78,6 +92,20 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
     }
 }
 
+
+-(void) drop
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 1.; // remove transparency
+        self.transform = CGAffineTransformIdentity;
+        self.layer.cornerRadius = 0.1; // round corners
+    } completion:^(BOOL finished) {
+        self.layer.cornerRadius = 0.; // remove rounded corners
+    }];
+    
+    isMoving = FALSE; // by setting back to false, the touchesBegan function will run fully when triggered.
+}
+
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event // touchesCancelled is a canned function.
 {
     if( [touches containsObject:movingTouch] ) {
@@ -88,48 +116,5 @@ static NSString* const animationKey = @"myCornerRadiusAnimation";
         }];
     }
 }
-
-
--(void) pickUp
-{
-    isMoving = TRUE;
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.alpha = 0.85;
-        CGAffineTransform t = CGAffineTransformMakeScale( 1.11, 1.11 );
-        t = CGAffineTransformRotate( t, M_PI );
-        self.transform = t;
-        //        self.transform = CGAffineTransformMakeScale(2.f, 1.5);
-        self.layer.cornerRadius = 50.;
-    } completion:^(BOOL finished) {
-        //        self.layer.cornerRadius = [a.toValue floatValue];
-    }];
-}
-
-
--(void) drop
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        self.alpha = 1.;
-        self.transform = CGAffineTransformIdentity;
-        self.layer.cornerRadius = 0.1;
-    } completion:^(BOOL finished) {
-        self.layer.cornerRadius = 0.;
-    }];
-    
-    isMoving = FALSE; // by setting back to false, the touchesBegan function will run fully when triggered.
-}
-
-#pragma mark - Animation delegate
-
--(void) animationDidStart:(CAAnimation *)anim
-{
-}
-
--(void) animationDidStop:(CABasicAnimation *)anim finished:(BOOL)flag
-{
-    [self.layer removeAnimationForKey:animationKey];
-}
-
 
 @end
